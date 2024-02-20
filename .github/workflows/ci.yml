@@ -56,4 +56,6 @@ jobs:
 
       - name: Compile SOLAR
         shell: bash
-        run: make
+        run: |
+          cd src
+          make
