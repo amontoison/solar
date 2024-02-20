@@ -63,4 +63,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: SOLAR.${{ matrix.os }}_${{ matrix.compiler }}_${{ matrix.version }}
-          path: ${SOLAR_HOME}/bin/solar
+          path: bin/solar
