@@ -1,0 +1,21 @@
+task:
+  matrix:
+    - name: FreeBSD
+      freebsd_instance:
+        image: freebsd-13-2-release-amd64
+    - name: MacOS M
+      macos_instance:
+        image: ghcr.io/cirruslabs/macos-monterey-base:latest
+  dependencies_script: |
+    echo $(uname)
+    if [ "$(uname)" = "FreeBSD" ]; then
+      pkg install -y gcc12
+      echo "CXX=g++12" >> $CIRRUS_ENV
+    else
+      brew install gcc
+      echo "CXX=g++-12" >> $CIRRUS_ENV
+    fi
+    echo "SOLAR_HOME=$CIRRUS_WORKING_DIR" >> $CIRRUS_ENV
+  compile_script: |
+    cd src
+    make
