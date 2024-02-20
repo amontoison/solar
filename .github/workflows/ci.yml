@@ -57,10 +57,10 @@ jobs:
       - name: Compile SOLAR
         shell: bash
         run: |
-          cd src
+          cd ${SOLAR_HOME}/src
           make
 
       - uses: actions/upload-artifact@v3
         with:
           name: SOLAR.${{ matrix.os }}_${{ matrix.compiler }}_${{ matrix.version }}
-          path: .bin/solar
+          path: ${SOLAR_HOME}/bin/solar
