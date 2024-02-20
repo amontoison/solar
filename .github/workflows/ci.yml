@@ -59,3 +59,8 @@ jobs:
         run: |
           cd src
           make
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: SOLAR.${{ matrix.os }}_${{ matrix.compiler }}_${{ matrix.version }}
+          path: .bin/solar
